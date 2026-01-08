@@ -1,36 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
-/* stylelint-disable-next-line at-rule-no-unknown */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Importamos Tailwind v4 y los plugins */
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Configuramos tu tema aquí mismo */
+@theme {
+  /* Tus Colores */
+  --color-primary: #1337ec;
+  --color-primary-dark: #0e2ab0;
+  --color-primary-light: #e0e7ff;
+
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #101322;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1a1d2d;
+
+  /* Tu Fuente */
+  --font-display: var(--font-inter), sans-serif;
+
+  /* Tus Bordes */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/* Forzamos el modo oscuro manual (por clase) para que funcione tu botón de tema */
+@custom-variant dark (&:where(.dark, .dark *));
 
-body {
-  color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Utilidades extra */
+@utility text-balance {
+  text-wrap: balance;
 }
